@@ -1,16 +1,6 @@
-from flask import Flask
-from flask_cors import CORS
-from .routes import init_routes
-import logging
+from .home import register_home_route
+from .predict import register_predict_route
 
-logger = logging.getLogger(__name__)
-
-def create_app():
-    logger.info("Creating Flask application...")
-    app = Flask(__name__)
-    logger.info("Configuring CORS...")
-    CORS(app) 
-    logger.info("Initializing routes...")
-    init_routes(app)
-    logger.info("Application created successfully")
-    return app
+def init_routes(app):
+    register_home_route(app)
+    register_predict_route(app)
