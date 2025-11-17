@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "974266621455",
+    "project_id": "notes-dda2b",
+    "storage_bucket": "notes-dda2b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974266621455:android:e10c255093c32c896a8d7a",
+        "android_client_info": {
+          "package_name": "com.example.notes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYrYB0IfuzEhFMclJngZCc-mLRuYieUkQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974266621455:android:fa876bac357f32d56a8d7a",
+        "android_client_info": {
+          "package_name": "com.example.skincancerdetectormni"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYrYB0IfuzEhFMclJngZCc-mLRuYieUkQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

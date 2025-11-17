@@ -1,0 +1,80 @@
+package com.example.skincancerdetectormni.home.mainapp
+
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import com.example.skincancerdetectormni.home.HomeScreen
+import com.example.skincancerdetectormni.auth.AuthScreen
+import com.example.skincancerdetectormni.auth.ForgotPasswordScreen
+import com.example.skincancerdetectormni.auth.login.LogInScreen
+import com.example.skincancerdetectormni.auth.signup.SignUpScreen
+import com.example.skincancerdetectormni.pastreports.PastReportsScreen
+import com.example.skincancerdetectormni.pastreports.ReportDetailScreen
+import com.google.firebase.auth.FirebaseAuth
+
+@Composable
+fun MainApp(
+    auth: FirebaseAuth = FirebaseAuth.getInstance(),
+    navController: NavHostController,
+    modifier: Modifier
+) {
+    val user = auth.currentUser
+    val startDestination = if (user == null) Route.AuthScreen.route else Route.HomeScreen.route
+    //ch
+    NavHost(
+        navController = navController,
+        startDestination = startDestination,
+        modifier = Modifier.fillMaxSize(),
+        enterTransition = {
+            slideInHorizontally(initialOffsetX = { it }) + fadeIn()
+        },
+        exitTransition = {
+            slideOutHorizontally(targetOffsetX = { -it }) + fadeOut()
+        },
+        popEnterTransition = {
+            slideInHorizontally(initialOffsetX = { -it }) + fadeIn()
+        },
+        popExitTransition = {
+            slideOutHorizontally(targetOffsetX = { it }) + fadeOut()
+        }
+    ) {
+
+        composable(Route.AuthScreen.route) {
+            AuthScreen(navController = navController)
+        }
+        composable(Route.HomeScreen.route) {
+            HomeScreen(
+              navController=  navController,
+
+            )
+        }
+        composable(Route.LogIn.route) {
+            LogInScreen(navController = navController)
+        }
+        composable(Route.SignUp.route) {
+            SignUpScreen(navController = navController)
+        }
+        composable(Route.PastReports.route) {
+            PastReportsScreen(navController = navController)
+        }
+        composable("${Route.ReportDetails.route}/{data}") { backStackEntry ->
+            val data = backStackEntry.arguments?.getString("data")
+
+            ReportDetailScreen(data =data )
+        }
+        composable(Route.ForgotPassword.route) {
+            ForgotPasswordScreen(navController = navController)
+        }
+
+
+    }
+}
+
+//change1
